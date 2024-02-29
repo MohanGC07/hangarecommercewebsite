@@ -12,53 +12,124 @@
     <style>
         /* Add your custom styles here */
         body {
+            font-family: Arial, sans-serif;
             background-color: #f8f9fa;
+            color: #333;
         }
-        .jumbotron {
+        .header {
             background-color: #343a40;
             color: #ffffff;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .jumbotron a {
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+        .profile-links {
+            display: flex;
+            align-items: center;
+        }
+        .profile-links a {
             color: #ffffff;
+            margin-left: 20px;
             text-decoration: none;
         }
-        .jumbotron a:hover {
-            color: #ffffff;
+        .profile-links a:hover {
             text-decoration: underline;
         }
-        .jumbotron .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
         }
-        .jumbotron .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
+        .footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+        .jumbotron {
+            background-image: url(); /* Replace 'your-image-url.jpg' with the path to your image */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff; /* Text color on top of the background image */
+            padding: 100px 0; /* Adjust padding as needed */
+        }
+        .jumbotron .container {
+            position: relative; /* Ensure container remains centered vertically */
+            z-index: 1; /* Ensure container remains on top of the background image */
+        }
+        .jumbotron h1 {
+            font-size: 4rem; /* Adjust heading size as needed */
+            margin-bottom: 20px; /* Adjust margin as needed */
+        }
+        .jumbotron p {
+            font-size: 1.5rem; /* Adjust paragraph font size as needed */
+            margin-bottom: 40px; /* Adjust margin as needed */
         }
     </style>
 
     <title>Welcome To HANGAR</title>
 </head>
 <body>
-<a href="{% url 'profile' request.user %}">
-    <div>
-        <img src="{{request.user.profile.image.url}}" alt="User Picture">
+<!-- Header -->
+<div class="header">
+    <div class="navbar-brand">HANGAR</div>
+    <div class="profile-links">
+        <a href="{% url 'profile' request.user %}">
+            <img class="profile-image" src="{{request.user.profile.image.url}}" alt="User Picture">
+        </a>
+        <a href="{% url 'logout' %}">logout</a>
+        <a href="{% url 'sign-in' %}">Signin</a>
+        <a href="{% url 'sign-up' %}">Signup</a>
     </div>
-</a>
-<a href="{% url 'logout' %}">logout</a>
-<a href="{% url 'sign-in' %}">Signin</a>
-<a href="{% url 'sign-up' %}">Signup</a>
-<div class="jumbotron">
-    <h1 class="display-4">Welcome To My Awesome Cart</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg" href="/shop/" role="button">Go To Shop</a>
 </div>
+
+<!-- Jumbotron -->
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">Welcome to HANGAR</h1>
+        <p class="lead">This is a professional-looking home page.</p>
+        <a class="btn btn-primary btn-lg" href="/shop/" role="button"> Go To Shop</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Feature 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et finibus odio.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Feature 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Feature 3</h3>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container">
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+</footer>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</body>
-</html>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh
