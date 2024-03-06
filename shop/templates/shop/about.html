@@ -1,6 +1,13 @@
 {% extends "shop/basic.html" %}
 {% block title %}About Us{% endblock %}
 {% block body %}
+{%load static%}
+<style>
+    /* Custom CSS for About Us page */
+    #about h1 {
+        font-weight: bold;
+    }
+</style>    
 <main>
     <section id="about" class="container py-5">
         <div class="row">
@@ -17,10 +24,11 @@
                 </p>
             </div>
             <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                <img src="" class="img-fluid" alt="About Image">
+                {% load static %}<img src=" {% static '/shop/images/r1.jpg' %}" class="img-fluid" alt="About Image">
             </div>
         </div>
     </section>
+    
 </main>
 
 <footer class="bg-dark text-white py-4">
@@ -43,4 +51,5 @@
         </div>
     </div>
 </footer>
+
 {% endblock %}

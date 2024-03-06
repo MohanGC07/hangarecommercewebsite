@@ -13,7 +13,7 @@
     <meta name="description" content="This project demonstrates how CSS grid (with flexbox and float fallback) can be used to re-create the layout of an Reconnect profile page.">
 
     <!-- Title -->
-    <title>Reconnect Profile Layout</title>
+    <title>HANGAR Profile Layout</title>
 
     <!-- External CSS Files -->
     <!-- <link rel="stylesheet" href="{% static 'assets3/css/reset.css' %}">
@@ -21,7 +21,85 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        <style>
+            /* style.css */
 
+/* Global styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  header {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 20px;
+  }
+  
+  .profile-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .profile-user-settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .profile-user-name {
+    margin: 10px 0;
+    font-size: 20px;
+  }
+  
+  .profile-edit-btn,
+  .profile-logout-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 10px; /* Add some bottom margin */
+  }
+  
+  .profile-bio p {
+    margin: 5px 0;
+  }
+  
+  .profile-real-name {
+    font-weight: bold;
+  }
+  
+  .profile-bio a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+        </style>
 </head>
 <body>
 

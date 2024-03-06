@@ -9,5 +9,9 @@ urlpatterns = [
     path('shop/', include('shop.urls')),
     path('authy/', include('authy.urls')),
     path('', views.index,name='ShopHome'),
+    path('terms-and-conditions/', views.terms_and_conditions, name='tc'),
     
     ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+
+     

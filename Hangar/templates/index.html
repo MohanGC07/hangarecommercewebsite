@@ -7,6 +7,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    {% load static %}
 
     <!-- Custom CSS -->
     <style>
@@ -50,7 +52,7 @@
             padding: 20px 0;
         }
         .jumbotron {
-            background-image: url(); /* Replace 'your-image-url.jpg' with the path to your image */
+            background-image: url('{% static "/images/yo.jpg" %}'); /* Replace 'your-image-url.jpg' with the path to your image */
             background-size: cover;
             background-position: center;
             color: #ffffff; /* Text color on top of the background image */
@@ -63,10 +65,12 @@
         .jumbotron h1 {
             font-size: 4rem; /* Adjust heading size as needed */
             margin-bottom: 20px; /* Adjust margin as needed */
+            color: #ff5733;
         }
         .jumbotron p {
             font-size: 1.5rem; /* Adjust paragraph font size as needed */
             margin-bottom: 40px; /* Adjust margin as needed */
+            color: black;
         }
     </style>
 
@@ -75,22 +79,24 @@
 <body>
 <!-- Header -->
 <div class="header">
-    <div class="navbar-brand">HANGAR</div>
+    <div class="navbar-brand">
+       HANGAR
+    </div>
     <div class="profile-links">
         <a href="{% url 'profile' request.user %}">
             <img class="profile-image" src="{{request.user.profile.image.url}}" alt="User Picture">
         </a>
-        <a href="{% url 'logout' %}">logout</a>
-        <a href="{% url 'sign-in' %}">Signin</a>
-        <a href="{% url 'sign-up' %}">Signup</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'sign-in' %}">SignIn</a>
+        <a href="{% url 'sign-up' %}">SignUp</a>
     </div>
 </div>
 
 <!-- Jumbotron -->
-<section class="jumbotron text-center">
+<section class="jumbotron text-center" >
     <div class="container">
         <h1 class="display-4">Welcome to HANGAR </h1>
-        <p class="lead">This is a professional-looking home page.</p>
+        <p class="lead">This is your Shop</p>
         <a class="btn btn-primary btn-lg" href="/shop/" role="button"> Go To Shop</a>
     </div>
 </section>
@@ -100,7 +106,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="feature-box">
+                <div class="feature-box" >
                     <h3>Feature 1</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et finibus odio.</p>
                 </div>
@@ -112,7 +118,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="feature-box">
+                <div class="feature-box" >
                     <h3>Feature 3</h3>
                     <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
                 </div>
@@ -124,7 +130,7 @@
 <!-- Footer -->
 <footer class="footer text-center">
     <div class="container">
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
+        <p>&copy; 2024 HANGAR. All rights reserved.</p>
     </div>
 </footer>
 

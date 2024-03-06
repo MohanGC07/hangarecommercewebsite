@@ -75,7 +75,9 @@
 <body>
 <!-- Header -->
 <div class="header">
-    <div class="navbar-brand">HANGAR</div>
+    <div class="navbar-brand">
+        <img src="{% static '/shop/images/aa.jpg' %}" alt="Logo">
+    </div>
     <div class="profile-links">
         <a href="{% url 'profile' request.user %}">
             <img class="profile-image" src="{{request.user.profile.image.url}}" alt="User Picture">

@@ -95,3 +95,5 @@ def logout_view(request):
 def login(request):
     return redirect('ShopHome')
 
+
+
