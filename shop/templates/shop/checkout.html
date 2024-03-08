@@ -53,9 +53,56 @@
         </form>
     </div>
 </div>
+<div class="col my-4">
+    <h2>Step 1 - Hangar Checkout - Review Your Cart Items</h2>
+    <div class="my-4">
+        <ul class="list-group" id="items">
+        </ul>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs.<span id="totalPrice"></b>  </span>Enter your details below & place your order. Thanks for using Our Cart!</li>
+            </ol>
+        </nav>
+    </div>
+</div> 
+<button id="payment-button">Pay with Khalti</button>   
 {% endblock %}
 {% block js %}
 <script>
+    var config = {
+        // replace the publicKey with yours
+        "publicKey": "test_public_key_dc457b515e5047d5b56b1c83929f84f6",
+        "productIdentity": "1234567890",
+        "productName": "Dragon",
+        "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+        "paymentPreference": [
+            "KHALTI",
+            "EBANKING",
+            "MOBILE_BANKING",
+            "CONNECT_IPS",
+            "SCT",
+            ],
+        "eventHandler": {
+            onSuccess (payload) {
+                // hit merchant api for initiating verfication
+                console.log(payload);
+            },
+            onError (error) {
+                console.log(error);
+            },
+            onClose () {
+                console.log('widget is closing');
+            }
+        }
+    };
+
+    var checkout = new KhaltiCheckout(config);
+    var btn = document.getElementById("payment-button");
+    btn.onclick = function () {
+        // minimum transaction amount must be 10, i.e 1000 in paisa.
+        checkout.show({amount: 1000});
+    }
+
 if (localStorage.getItem('cart') == null) {
     var cart = {};
 } else {

@@ -21,7 +21,7 @@
         .header {
             background-color: #343a40;
             color: #ffffff;
-            padding: 20px 0;
+            padding:5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,7 +52,7 @@
             padding: 20px 0;
         }
         .jumbotron {
-            background-image: url('{% static "/images/yo.jpg" %}'); /* Replace 'your-image-url.jpg' with the path to your image */
+            background-image: url('{% static "/images/cc.jpg" %}'); /* Replace 'your-image-url.jpg' with the path to your image */
             background-size: cover;
             background-position: center;
             color: #ffffff; /* Text color on top of the background image */
@@ -72,16 +72,33 @@
             margin-bottom: 40px; /* Adjust margin as needed */
             color: black;
         }
-    </style>
+        .logo {
+            margin-left: 5px;
+            
+        }
+        /* New styles for the search form */
+    .navbar .form-inline {
+        justify-content: center; /* Center the form horizontally */
+    }
+    .navbar .form-control {
+        width: 400px; /* Adjust width as needed */
+        font-size: 1.2rem; /* Adjust font size as needed */
+    }
+</style>
+
 
     <title>Welcome To HANGAR</title>
 </head>
 <body>
 <!-- Header -->
 <div class="header">
-    <div class="navbar-brand">
-       HANGAR
-    </div>
+       
+       <img class="logo"src=" {% static 'images/aa.jpg' %}"alt="logo"height="50px"width="100px">
+    <form method = 'get' action='/shop/search/' class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='search' id='search'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
     <div class="profile-links">
         <a href="{% url 'profile' request.user %}">
             <img class="profile-image" src="{{request.user.profile.image.url}}" alt="User Picture">
@@ -96,7 +113,7 @@
 <section class="jumbotron text-center" >
     <div class="container">
         <h1 class="display-4">Welcome to HANGAR </h1>
-        <p class="lead">This is your Shop</p>
+        
         <a class="btn btn-primary btn-lg" href="/shop/" role="button"> Go To Shop</a>
     </div>
 </section>
@@ -107,20 +124,17 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="feature-box" >
-                    <h3>Feature 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam et finibus odio.</p>
+                    <img class="logo"src=" {% static 'images/bb.jpg' %}"alt="logo"height="200px"width="200px"> 
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-box">
-                    <h3>Feature 2</h3>
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                    <img class="logo"src=" {% static 'images/dd.jpg' %}"alt="logo"height="200px"width="200px">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-box" >
-                    <h3>Feature 3</h3>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+                    <img class="logo"src=" {% static 'images/ee.jpg' %}"alt="logo"height="200px"width="200px">
                 </div>
             </div>
         </div>

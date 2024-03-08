@@ -24,6 +24,12 @@
             	Enter your order Id and Email and click Track Order to find details about your order!
             </ul>
         </div>
+        <h2>Your Order Details </h2>
+        <div class="my-4">
+            <ul class="list-group" id="citems">
+                Enter your order Id and Email and click Track Order to find details about your order!
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -44,7 +50,8 @@ $('#trackerForm').submit(function(event) {
         })
         .done(function(data) {
             console.log(data)
-            updates = JSON.parse(data);
+            data = JSON.parse(data)
+            updates = data[0];
             if (updates.length > 0 & updates != {}) {
                 for (i = 0; i < updates.length; i++) {
                     let text = updates[i]['text'];
@@ -60,6 +67,9 @@ $('#trackerForm').submit(function(event) {
                     Sorry, We are not able to fetch this order id and email. Make sure to type correct order Id and email</li>`
             	$('#items').append(mystr);
             }
+            //fill in the order details
+            cart=data[1];
+            console.cart();
         });
     event.preventDefault();
 });

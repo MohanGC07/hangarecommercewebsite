@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
 
     <title>{%block title%}{%endblock%}</title>
         <style>
@@ -16,7 +17,8 @@
     <body>
     {% load static %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/shop/">HANGAR</a>
+        {% comment %} <a class="navbar-brand" href="/shop/">HANGAR</a> {% endcomment %}
+        <img class="logo"src=" {% static 'images/aa.jpg' %}"alt="logo"height="50px"width="100px">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/shop/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'ShopHome' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/shop/about">About Us</a>
@@ -59,6 +61,7 @@
         
 {% block js %}
 <script>
+  
 console.log('working');
 if(localStorage.getItem('cart') == null){
 var cart = {};
