@@ -6,3 +6,7 @@ def index(request):
 def terms_and_conditions(request):
     # View logic
     return render(request, 'tc.html')
+
+def shop_view(request):
+    # Logic to handle requests to the "/shop" URL
+    return render(request, 'basic.html')

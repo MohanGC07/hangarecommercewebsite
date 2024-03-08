@@ -1,0 +1,67 @@
+{% extends "shop/basic.html" %}
+{% block title %}All Products{% endblock %}
+{% block body %}
+{%load static%}
+<style>
+    .item {
+        display: flex;
+        flex-grow: 1;
+    }
+    .item .image-container {
+        position: relative;
+        flex-shrink: 0;
+        width: 100%;
+        height: 20rem;
+        overflow: hidden;
+    }
+    .item .image-container img {
+        position: absolute;
+        object-fit: contain;
+    }
+    
+    .item .card {
+        display: flex;
+        flex-direction: column;
+        width: 16rem;
+    }
+    .item .card .card-body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+    }
+    .item .card .buttons {
+        justify-content: flex-end;
+    }
+</style> 
+{% for product in allProds %}
+
+<div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+    <div class="container carousel-inner no-padding">
+        <div class="carousel-item active">
+            {% for i in product %}
+            <div class="item">
+                <div class="card">
+                    <div class="image-container">
+                        <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                        <p class="card-text">{{i.desc|slice:"0:53"}}...</p>
+                        <h6 class="card-title" >Price : <span id="pricepr{{i.id}}">{{i.price}}</span></h6>
+                       <div class="buttons">
+                           <span id="divpr{{i.id}}" class="divpr">
+                               <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+                           </span>
+                           <a href="/shop/products/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

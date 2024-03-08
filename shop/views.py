@@ -21,6 +21,8 @@ def about(request):
    
    return render(request,'shop/about.html')
 
+def all(request):
+   return render(request,'shop/all.html')
 
 def contact(request):
    if request.method=="POST":
@@ -103,18 +105,3 @@ def checkout(request):
         id=order.order_id
         return render(request, 'shop/checkout.html', {'thank':thank, 'id':id})
     return render(request, 'shop/checkout.html')
-
-def verify_payment(request)
-
-url = "https://khalti.com/api/v2/payment/verify/"
-
-payload = {
-  'token': 'QUao9cqFzxPgvWJNi9aKac',
-  'amount': 1000
-}
-
-headers = {
-  'Authorization': 'Key test_secret_key_f59e8b7d18b4499ca40f68195a846e9b'
-}
-
-response = requests.request("POST", url, headers=headers, data=payload)
