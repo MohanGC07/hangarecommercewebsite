@@ -1,3 +1,4 @@
+from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -8,11 +9,10 @@ from django.db import transaction
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate
 from django.http import HttpResponse
-
 from django.contrib.auth import logout
-from django.contrib.auth import login
+# from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 
 from django.contrib.auth.models import User
@@ -64,26 +64,41 @@ def EditProfile(request):
 
 
 
+# def register(request):
+#     if request.method == "POST":
+#         form = UserRegisterForm(request.POST)
+#         if form.is_valid():
+#             new_user = form.save()
+
+#             # Automatically Log In The User
+#             login(request, new_user)
+
+#             return redirect('ShopHome')
+#     else:
+#         if request.user.is_authenticated:
+#             return redirect('ShopHome')
+#         else:
+#             form = UserRegisterForm()
+
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, 'sign-up.html', context)
+
+
 def register(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
-
-            # Automatically Log In The User
-            login(request, new_user)
-
-            return redirect('ShopHome')
-    else:
-        if request.user.is_authenticated:
-            return redirect('ShopHome')
+            user = form.save()
+            login(request, user)
+            return redirect('/')
         else:
-            form = UserRegisterForm()
+            print(form.errors)  # ← THIS LINE
+    else:
+        form = UserRegisterForm()
 
-    context = {
-        'form': form,
-    }
-    return render(request, 'sign-up.html', context)
+    return render(request, 'sign-up.html', {'form': form})
 
 
 def logout_view(request):
@@ -91,9 +106,14 @@ def logout_view(request):
     return redirect('sign-in')  # Redirect to the homepage or any other page
 
 # In your login view, redirect to index.html upon successful login
-@login_required
-def login(request):
-    return redirect('ShopHome')
+# @login_required
+# def login(request):
+#     return redirect('ShopHome')
+
+# @login_required
+# def login_redirect(request):
+#     return redirect('ShopHome')
+
 
 
 
