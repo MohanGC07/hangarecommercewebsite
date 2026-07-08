@@ -58,27 +58,31 @@ def tracker(request):
     return render(request, 'shop/tracker.html')
 
 def searchMatch(query, item):
-    if item:
-        if query in item.description.lower() or query in item.product_name.lower() or query in item.category.lower():
-            return True
-    return False
+    if not item:
+        return False
+    searchable_fields = (item.product_name, item.category, item.description)
+    return any(query in (field or "").lower() for field in searchable_fields)
 
 
 def search(request):
-    query= request.GET.get('search')
+    query = request.GET.get('search', '').strip().lower()
+
+    if not query or len(query) < 4:
+        return render(request, 'shop/index.html',
+                      {'msg': "Please make sure to enter relevant search query"})
+
     allProds = []
-    catprods = Product.objects.values('category', 'id')
-    cats = {item['category'] for item in catprods}
-    for cat in cats:
-        prodtemp = Product.objects.filter(category=cat)
-        prod=[item for item in prodtemp if query in searchMatch(query,item)]
-        n = len(prod)
-        nSlides = n // 4 + ceil((n / 4) - (n // 4))
-        if len(prod)!= 0:
-            allProds.append([prod, range(1, nSlides), nSlides])
-    params = {'allProds': allProds, "msg":""}
-    if len(allProds)==0 or len(query)<4:
-        params={'msg':"Please make sure to enter relevant search query"}
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    for cat in categories:
+        products = Product.objects.filter(category=cat)
+        matched = [item for item in products if searchMatch(query, item)]
+        if matched:
+            n = len(matched)
+            nSlides = n // 4 + ceil((n / 4) - (n // 4))
+            allProds.append([matched, range(1, nSlides), nSlides])
+
+    params = {'allProds': allProds, 'msg': ""} if allProds \
+        else {'msg': "No products found matching your search."}
     return render(request, 'shop/index.html', params)
 
 def productview(request,myid):
